@@ -18,18 +18,17 @@ SECRET_KEY = "AQAAAAANTeVZvYUVzZib1K52U1NZmqVA5PBGsAxIMJMEwM3yMQ=="
 CUSTOMER_ID = "1015608"
 
 GOOGLE_JSON_PATH = (
-    "C:/Users/User/Desktop/code/report/백업폴더(지수부재시)/"
     "마이테레사/json/peppy-ratio-432702-c7-8ee7addafc50.json"
 )
-
-GOOGLE_SHEET_NAME = "마이테레사"
+GOOGLE_SHEET_NAME = "myt_naver_report"
 PERFORMANCE_SHEET_NAME = "Adgroup_Performance"
 BUDGET_SHEET_NAME = "Adgroup_Budget"
 
-START_DATE = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
-END_DATE = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-TODAY = datetime.now().strftime("%Y-%m-%d")
-
+KST = ZoneInfo("Asia/Seoul")
+now_kst = datetime.now(KST)
+START_DATE = (today - timedelta(days=30)).strftime("%Y-%m-%d")
+END_DATE = (today - timedelta(days=1)).strftime("%Y-%m-%d")
+TODAY = now_kst.date().strftime("%Y-%m-%d")
 
 def make_signature(timestamp, method, uri, secret_key):
     message = f"{timestamp}.{method}.{uri}"
