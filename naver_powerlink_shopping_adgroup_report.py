@@ -9,7 +9,7 @@ import gspread
 from zoneinfo import ZoneInfo
 from google.oauth2.service_account import Credentials
 from datetime import datetime, timedelta
-
+from pathlib import Path
 
 BASE_URL = "https://api.searchad.naver.com"
 
