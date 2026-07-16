@@ -6,7 +6,7 @@ import json
 import requests
 import pandas as pd
 import gspread
-
+from zoneinfo import ZoneInfo
 from google.oauth2.service_account import Credentials
 from datetime import datetime, timedelta
 
@@ -17,18 +17,23 @@ API_KEY = "01000000000d4de559bd8515cd989bd4ae76535359afb03c701256acf023d9ae16190
 SECRET_KEY = "AQAAAAANTeVZvYUVzZib1K52U1NZmqVA5PBGsAxIMJMEwM3yMQ=="
 CUSTOMER_ID = "1015608"
 
-GOOGLE_JSON_PATH = (
-    "마이테레사/json/peppy-ratio-432702-c7-8ee7addafc50.json"
-)
+GOOGLE_JSON_PATH = BASE_DIR / "peppy-ratio-432702-c7-8ee7addafc50.json"
 GOOGLE_SHEET_NAME = "myt_naver_report"
 PERFORMANCE_SHEET_NAME = "Adgroup_Performance"
 BUDGET_SHEET_NAME = "Adgroup_Budget"
 
 KST = ZoneInfo("Asia/Seoul")
 now_kst = datetime.now(KST)
+today = now_kst.date()
+
 START_DATE = (today - timedelta(days=30)).strftime("%Y-%m-%d")
 END_DATE = (today - timedelta(days=1)).strftime("%Y-%m-%d")
 TODAY = now_kst.date().strftime("%Y-%m-%d")
+
+print("현재 한국시간 :", now_kst)
+print("오늘 :", TODAY)
+print("조회 시작 :", START_DATE)
+print("조회 종료 :", END_DATE)
 
 def make_signature(timestamp, method, uri, secret_key):
     message = f"{timestamp}.{method}.{uri}"
