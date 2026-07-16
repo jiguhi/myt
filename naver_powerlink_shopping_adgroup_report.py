@@ -17,7 +17,10 @@ API_KEY = "01000000000d4de559bd8515cd989bd4ae76535359afb03c701256acf023d9ae16190
 SECRET_KEY = "AQAAAAANTeVZvYUVzZib1K52U1NZmqVA5PBGsAxIMJMEwM3yMQ=="
 CUSTOMER_ID = "1015608"
 
-GOOGLE_JSON_PATH = (BASE_DIR / "peppy-ratio-432702-c7-8ee7addafc50.json")
+BASE_DIR = Path(__file__).resolve().parent
+GOOGLE_JSON_PATH = (
+    BASE_DIR / "peppy-ratio-432702-c7-8ee7addafc50.json"
+)
 GOOGLE_SHEET_NAME = "myt_naver_report"
 PERFORMANCE_SHEET_NAME = "Adgroup_Performance"
 BUDGET_SHEET_NAME = "Adgroup_Budget"
