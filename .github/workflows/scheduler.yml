@@ -1,0 +1,51 @@
+name: Daily Naver Report
+
+on:
+  schedule:
+    # 한국시간 오전 8시 30분 = UTC 전날 오후 11시 30분
+    - cron: "30 23 * * *"
+
+  # Actions 화면에서 수동 실행
+  workflow_dispatch:
+
+jobs:
+  run-report:
+    runs-on: ubuntu-latest
+
+    env:
+      TZ: Asia/Seoul
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check Korean time
+        run: |
+          echo "UTC 시간:"
+          date -u
+
+          echo "한국 시간:"
+          TZ=Asia/Seoul date
+
+          python - <<'PY'
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          now_kst = datetime.now(ZoneInfo("Asia/Seoul"))
+
+          print("한국 현재시간:", now_kst)
+          print("한국 현재날짜:", now_kst.date())
+          PY
+
+      - name: Run Naver report
+        run: python naver_powerlink_shopping_adgroup_report.py
