@@ -26,4 +26,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-        run: python main.py
+        run: naver_powerlink_shopping_adgroup_report.py
