@@ -26,11 +26,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Python script
-        env:
-          NAVER_API_KEY: ${{ secrets.NAVER_API_KEY }}
-          NAVER_SECRET_KEY: ${{ secrets.NAVER_SECRET_KEY }}
-          NAVER_CUSTOMER_ID: ${{ secrets.NAVER_CUSTOMER_ID }}
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          TZ: Asia/Seoul
         run: python main.py
