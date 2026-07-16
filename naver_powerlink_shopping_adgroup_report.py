@@ -19,7 +19,7 @@ CUSTOMER_ID = "1015608"
 
 BASE_DIR = Path(__file__).resolve().parent
 GOOGLE_JSON_PATH = (
-    BASE_DIR / "peppy-ratio-432702-c7-8ee7addafc50.json"
+    BASE_DIR/"peppy-ratio-432702-c7-8ee7addafc50.json"
 )
 GOOGLE_SHEET_NAME = "myt_naver_report"
 PERFORMANCE_SHEET_NAME = "Adgroup_Performance"
