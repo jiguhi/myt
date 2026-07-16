@@ -1,0 +1,14 @@
+pandas
+requests
+numpy
+openpyxl
+gspread
+gspread-dataframe
+gspread-formatting
+google-auth
+seaborn
+plotly
+selenium
+beautifulsoup4
+webdriver-manager
+gspread-formatting
